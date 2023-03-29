@@ -1,45 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Card from './components/Card'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Card from "./components/Card";
+import MessageForm from "./components/Form";
+import { Route, Routes } from "react-router";
+import MainPage from "./pages/Main";
+import UsersPage from "./pages/Users";
+import ShopsPage from "./pages/Shops";
+
+const cardsData = [
+  {
+    id: 1,
+    title: "First title",
+    description: "First description",
+  },
+  {
+    id: 2,
+    title: "Second title",
+    description: "Second description",
+  },
+  {
+    id: 3,
+    title: "Third title",
+    description: "Third description",
+  },
+  {
+    id: 4,
+    title: "Fourth title",
+    description: "Fourth description",
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  const message = "Welcome to Vite and React"
-  const h1 = <h1>{message}</h1>
-  const link = "https://vitejs.dev"
 
   return (
-    <div className="App">
-      <div>
-        {h1}
-        <Card>
-          <h3>Inside Card</h3>
-          <p>This is the paragraph inside the <mark>Something</mark></p>
-        </Card>
-        <a href={link} target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/users" element={<UsersPage />} />
+      <Route path="/shops" element={<ShopsPage />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
